@@ -2,7 +2,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/travelr-be',
+    connection: 'postgres://localhost/travelr',
     useNullAsDefault: true,
     migrations: {
       directory: './db/migrations'
@@ -14,7 +14,7 @@ module.exports = {
 
   test: {
     client: 'pg',
-    connection: 'postgres://localhost/db_test',
+    connection: 'postgres://localhost/travelr_test',
     migrations: {
       directory: './db/migrations'
     },
