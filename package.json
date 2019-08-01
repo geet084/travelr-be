@@ -10,12 +10,17 @@
     "pg": "^7.12.0"
   },
   "devDependencies": {
+    "@babel/polyfill": "^7.4.0",
+    "babel-jest": "^24.5.0",
     "jest": "^24.8.0",
     "supertest": "^4.0.2"
   },
   "scripts": {
     "start": "node server.js",
-    "devtest": "jest --watchAll"
+    "devtest": "jest --watchAll",
+    "test": "jest --forceExit",
+    "migrate-test": "knex migrate:latest --env=test",
+    "seed-test": "knex seed:run --env=test"
   },
   "author": "",
   "license": "ISC"
