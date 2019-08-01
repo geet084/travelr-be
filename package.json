@@ -9,9 +9,13 @@
     "knex": "^0.19.1",
     "pg": "^7.12.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^24.8.0",
+    "supertest": "^4.0.2"
+  },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "devtest": "jest --watchAll"
   },
   "author": "",
   "license": "ISC"
