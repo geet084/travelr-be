@@ -26,4 +26,32 @@ describe('Server', () => {
       expect(results.length).toEqual(expectedObjects)
     })
   })
+  describe('GET /objects/:id/images', () => {
+    it('should return a status of 200 if OK', async () => {
+      const firstObject = await database('objects').first();
+      const id = firstObject.id
+
+      const response = await request(app).get(`/api/v1/objects/${id}/images`);
+
+      expect(response.status).toBe(200);
+    })
+
+    it('should return a status of 404 if not OK', async () => {
+      const id = -1;
+      const response = await request(app).get(`/api/v1/objects/${id}/images`);
+
+      expect(response.status).toBe(404);
+    })
+
+    it('should return all of the images for an object in the DB if the response is OK', async () => {
+      const expectedImages = objects[1].images.length;
+      const foundObject = await database('objects').where('object_name', 'Earth');
+      const id = foundObject[0].id;
+
+      const response = await request(app).get(`/api/v1/objects/${id}/images`);
+      const results = response.body;
+
+      expect(results.length).toEqual(expectedImages);
+    })
+  })
 })
