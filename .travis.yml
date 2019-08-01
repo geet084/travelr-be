@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- node
+services:
+- postgresql
+notifications:
+  email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: AKJNmLszSQ7+GItUpzlDwxBAEv1QuRcuQvCooHEVuWCDRMnPcZi9PXgJSehnyNvvmbi4flbDYmehMNUa9j7En6wagEx5HgqgQlyLcNS0can9JHb2e86/oZSWo0dk3rIIdRZm+7qW61GCx/MrRbvuW9F67zP0Xs3g1piM3w6XhS54cXZXkN8LLjX/1FMm66v8fkHm4hDXbEtG2jKcxi0aQkir0wO9FEgmrcsfkxaGnxKVKmCvqccS7eLxnzVq7mM1JXF85mBOLOq4NKFXy73ZMo4v35fwkXDlCpzAU24uMsMBqSOTCQMo2LuPNQ2PlKbIcyC9bVvWa4JbguAmtFLl8Qt8f45iEN6fbiWX6fJWKlQptQ+yP59/fzde/dDcc+UgnzA7mMa6zGWtcqM2lvJOf7zGDQoCg0wyqop8vcfZdFiZ80Sm1evUzOqxM/rVHMflidocCJMlAxzGE3t3D2B+bblncZG2wsi/myB1WL3siQhy2j+Ta6SQwYuD/Wb4002mvbY8DXiVIB9ph5YK0jfDRi2n5KFC0wTcpgS8WRMNUcAkHyNClo/EazIxcx+xKpfLokUDUNimg+N4/1KAUExwLOWlmKL5r5t7+ik27SzMjC7Hu02ubwRrIl7T7lwjYPb/lvMt9p1ipnQlk+FEir2vcy1BfH6KZVfRw18AzbiK9EY=
+  app: travelr-be
+  run:
+  - knex migrate:latest
+  - knex seed:run
+  skip_cleanup: true
