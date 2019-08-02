@@ -34,4 +34,14 @@ app.get('/api/v1/objects/:id/images', (req, res) => {
     })
 })
 
+app.get('/api/v1/images', (req, res) => {
+  database('images').select()
+    .then(images => {
+      res.status(200).json(images);
+    })
+    .catch(error => {
+      res.status(500).json({ error })
+    })
+})
+
 module.exports = app;

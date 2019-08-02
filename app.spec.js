@@ -26,6 +26,7 @@ describe('Server', () => {
       expect(results.length).toEqual(expectedObjects)
     })
   })
+
   describe('GET /objects/:id/images', () => {
     it('should return a status of 200 if OK', async () => {
       const firstObject = await database('objects').first();
@@ -52,6 +53,23 @@ describe('Server', () => {
       const results = response.body;
 
       expect(results.length).toEqual(expectedImages);
+    })
+  })
+
+  describe('GET /images', () => {
+    it('should return a status of 200 if OK', async () => {
+      const response = await request(app).get('/api/v1/images');
+
+      expect(response.status).toBe(200);
+    })
+
+    it('should return all of the images in the DB if the response is OK', async () => {
+      const expectedImages = await database('images').select()
+      
+      const response = await request(app).get('/api/v1/images');
+      const results = response.body;
+
+      expect(results.length).toEqual(expectedImages.length)
     })
   })
 })
