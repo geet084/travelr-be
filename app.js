@@ -11,7 +11,15 @@ app.use(express.json());
 app.get('/api/v1/objects', (req, res) => {
   database('objects').select()
     .then(objects => {
-      res.status(200).json(objects);
+      objects.sort((a, b) => a.id - b.id)
+      let planets = objects.filter(obj => obj.planet)
+      let moons = objects.filter(obj => obj.moon)
+      let stars = objects.filter(obj => obj.star)
+      let bodies = objects.filter(obj => !obj.planet && !obj.moon && !obj.star)
+
+      const data = { planets, moons, stars, bodies }
+
+      res.status(200).json({ data });
     })
     .catch(error => {
       res.status(500).json({ error })
