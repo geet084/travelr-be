@@ -21,9 +21,11 @@ describe('Server', () => {
       const expectedObjects = objects.length;
 
       const response = await request(app).get('/api/v1/objects');
-      const results = response.body;
+      const expected = Object.keys(response.body.data).reduce((total, category) => {
+        return total += Object.keys(response.body.data[category]).length
+      }, 0);
 
-      expect(results.length).toEqual(expectedObjects)
+      expect(expected).toEqual(expectedObjects)
     })
   })
 
@@ -46,7 +48,7 @@ describe('Server', () => {
 
     it('should return all of the images for an object in the DB if the response is OK', async () => {
       const expectedImages = objects[1].images.length;
-      const foundObject = await database('objects').where('object_name', 'Earth');
+      const foundObject = await database('objects').where('name', 'Earth');
       const id = foundObject[0].id;
 
       const response = await request(app).get(`/api/v1/objects/${id}/images`);
