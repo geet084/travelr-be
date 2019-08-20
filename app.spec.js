@@ -85,5 +85,15 @@ describe('Server', () => {
 
       expect(response.status).toBe(200);
     })
+
+    it('should return a status of 422 if post body is not formatted correctly', async () => {
+      const newImage = [{
+        nameIsWrong: 'sun',
+        imageId: '12345'
+      }];
+      const response = await request(app).post('/api/v1/images').send(newImage);
+
+      expect(response.status).toBe(422);
+    })
   });
 })

@@ -55,6 +55,15 @@ app.get('/api/v1/images', (req, res) => {
 app.post('/api/v1/images', (req, res) => {
 
   req.body.forEach((obj, i) => {
+
+    const params = ['name', 'imageId']
+    for (let reqParam of params) {
+      if (!obj[reqParam]) {
+        return res.status(422).send({
+          error: `Object ${i + 1} ::: Expected format: { name: <String>, imageId: <String> }. You're missing a "${reqParam}" property!`
+        })
+      }
+    }
     res.status(200).json(obj)
   });
 })
