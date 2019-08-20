@@ -105,5 +105,17 @@ describe('Server', () => {
 
       expect(response.status).toBe(404);
     })
+
+    it('should post a new image', async () => {
+      const newImage = [{
+        name: 'sun',
+        imageId: '12345'
+      }];
+      const response = await request(app).post('/api/v1/images').send(newImage);
+      const result = response.body
+
+      expect(result.name).toBe(newImage[0].name);
+      expect(result.imageId).toBe(newImage[0].imageId);
+    })
   });
 })
