@@ -74,4 +74,16 @@ describe('Server', () => {
       expect(results.length).toEqual(expectedImages.length)
     })
   })
+
+  describe('POST /images', () => {
+    it('should return a status of 200 if OK', async () => {
+      const newImage = [{
+        name: 'sun',
+        imageId: '12345'
+      }];
+      const response = await request(app).post('/api/v1/images').send(newImage);
+
+      expect(response.status).toBe(200);
+    })
+  });
 })

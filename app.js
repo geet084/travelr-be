@@ -52,4 +52,11 @@ app.get('/api/v1/images', (req, res) => {
     })
 })
 
+app.post('/api/v1/images', (req, res) => {
+
+  req.body.forEach((obj, i) => {
+    res.status(200).json(obj)
+  });
+})
+
 module.exports = app;
