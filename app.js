@@ -64,8 +64,32 @@ app.post('/api/v1/images', (req, res) => {
         })
       }
     }
-    res.status(200).json(obj)
+
+    let imageName = parseObjName(obj.name);
+
+    database('objects').where('name', imageName).select()
+      .then(foundObj => {
+        if (foundObj.length) {
+          database('images').where('image_name', imageName).insert({
+            image_name: imageName,
+            image_id: obj.imageId,
+            object_id: foundObj[0].id
+          }, 'id')
+            .then(images => {
+              if (images.length) res.status(200).json({ id: images[0], ...obj })
+              else res.status(500).json('some error...')
+            })
+        } else return res.status(404).json(`Object name "${obj.name}" not in database, POST unsuccessful`)
+      })
   });
 })
 
 module.exports = app;
+
+function parseObjName(word) {
+  return word.trim().split(' ').map(word => {
+    let firstChar = word.split('').shift().toUpperCase();
+    let restOfWord = word.slice(1, word.length).toLowerCase();
+    return firstChar + restOfWord;
+  }).join(' ');
+}

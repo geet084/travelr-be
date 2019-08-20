@@ -95,5 +95,15 @@ describe('Server', () => {
 
       expect(response.status).toBe(422);
     })
+
+    it('should return a status of 404 if the corresponding object is not in the database', async () => {
+      const newImage = [{
+        name: 'Not A Planet',
+        imageId: '12345'
+      }];
+      const response = await request(app).post('/api/v1/images').send(newImage);
+
+      expect(response.status).toBe(404);
+    })
   });
 })
