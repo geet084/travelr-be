@@ -14,6 +14,7 @@ exports.up = (knex) => {
       table.string('orbital_period');
       table.boolean('planet');
       table.boolean('star');
+      table.boolean('body');
       table.timestamps(true, true);
     }),
 

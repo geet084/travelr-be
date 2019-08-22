@@ -19,6 +19,7 @@ const createObject = (knex, object) => {
     orbital_period: object.orbital_period,
     planet: object.planet,
     star: object.star,
+    body: object.body,
   }, 'id')
     .then(objectId => {
       let imagesPromises = [];
