@@ -11,13 +11,14 @@ app.use(express.json());
 app.get('/api/v1/objects', (req, res) => {
   database('objects').select()
     .then(objects => {
+      let data = { planets: [], moons: [], stars: [], bodies: [] }
       objects.sort((a, b) => a.id - b.id)
-      let planets = objects.filter(obj => obj.planet)
-      let moons = objects.filter(obj => obj.moon)
-      let stars = objects.filter(obj => obj.star)
-      let bodies = objects.filter(obj => !obj.planet && !obj.moon && !obj.star)
 
-      const data = { planets, moons, stars, bodies }
+      Object.keys(data).forEach(key => {
+        let objKey = key === 'bodies' ? 'body' : key.slice(0, key.length - 1)
+        let info = objects.filter(obj => obj[objKey])
+        data[key] = removeServerInfo(info)
+      })
 
       res.status(200).json({ data });
     })
@@ -85,6 +86,19 @@ app.post('/api/v1/images', (req, res) => {
 })
 
 module.exports = app;
+
+function removeServerInfo(objects) {
+  let serverKeys = ['body', 'moon', 'planet', 'star', 'created_at', 'updated_at'];
+
+  return objects.map(obj => {
+    let cleanedObj = {};
+    
+    Object.keys(obj).forEach(key => {
+      if (!serverKeys.includes(key)) cleanedObj[key] = obj[key]
+    });
+    return cleanedObj;
+  });
+}
 
 function parseObjName(word) {
   return word.trim().split(' ').map(word => {
