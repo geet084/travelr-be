@@ -47,13 +47,14 @@ describe('Server', () => {
     })
 
     it('should return all of the images for an object in the DB if the response is OK', async () => {
-      const expectedImages = objects[1].images.length;
+      const earth = Object.keys(objects).find(obj => objects[obj].name === 'Earth');
+      const expectedImages = objects[earth].images.length;
       const foundObject = await database('objects').where('name', 'Earth');
       const id = foundObject[0].id;
 
       const response = await request(app).get(`/api/v1/objects/${id}/images`);
       const results = response.body;
-
+      
       expect(results.length).toEqual(expectedImages);
     })
   })
