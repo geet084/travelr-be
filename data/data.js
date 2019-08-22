@@ -15,6 +15,7 @@ module.exports = [
     "moon": false,
     "planet": false,
     "star": true,
+    "body": false,
   },
   {
     "name": "Mercury",
@@ -32,6 +33,7 @@ module.exports = [
     "moon": false,
     "planet": true,
     "star": false,
+    "body": false,
   },
   {
     "name": "Venus",
@@ -49,6 +51,7 @@ module.exports = [
     "moon": false,
     "planet": true,
     "star": false,
+    "body": false,
   },
   {
     "name": "Earth",
@@ -66,6 +69,7 @@ module.exports = [
     "moon": false,
     "planet": true,
     "star": false,
+    "body": false,
   },
   {
     "name": "Moon",
@@ -83,6 +87,7 @@ module.exports = [
     "moon": true,
     "planet": false,
     "star": false,
+    "body": false,
   },
   {
     "name": "Mars",
@@ -100,6 +105,7 @@ module.exports = [
     "moon": false,
     "planet": true,
     "star": false,
+    "body": false,
   },
   {
     "name": "Jupiter",
@@ -117,6 +123,7 @@ module.exports = [
     "moon": false,
     "planet": true,
     "star": false,
+    "body": false,
   },
   {
     "name": "Saturn",
@@ -134,6 +141,7 @@ module.exports = [
     "moon": false,
     "planet": true,
     "star": false,
+    "body": false,
   },
   {
     "name": "Uranus",
@@ -151,6 +159,7 @@ module.exports = [
     "moon": false,
     "planet": true,
     "star": false,
+    "body": false,
   },
   {
     "name": "Neptune",
@@ -168,6 +177,7 @@ module.exports = [
     "moon": false,
     "planet": true,
     "star": false,
+    "body": false,
   },
   {
     "name": "Pluto",
@@ -185,6 +195,7 @@ module.exports = [
     "moon": false,
     "planet": true,
     "star": false,
+    "body": false,
   },
   {
     "name": "Titan",
@@ -202,6 +213,7 @@ module.exports = [
     "moon": true,
     "planet": false,
     "star": false,
+    "body": false,
   },
   {
     "name": "Io",
@@ -219,6 +231,7 @@ module.exports = [
     "moon": true,
     "planet": false,
     "star": false,
+    "body": false,
   },
   {
     "name": "Ganymede",
@@ -236,6 +249,7 @@ module.exports = [
     "moon": true,
     "planet": false,
     "star": false,
+    "body": false,
   },
   {
     "name": "Asteroid Belt",
@@ -253,6 +267,7 @@ module.exports = [
     "moon": false,
     "planet": false,
     "star": false,
+    "body": true,
   },
   {
     "name": "Kuiper Belt",
@@ -270,6 +285,7 @@ module.exports = [
     "moon": false,
     "planet": false,
     "star": false,
+    "body": true,
   },
   {
     "name": "Oort Cloud",
@@ -287,5 +303,6 @@ module.exports = [
     "moon": false,
     "planet": false,
     "star": false,
+    "body": true,
   }
 ];
