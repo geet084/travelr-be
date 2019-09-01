@@ -108,4 +108,31 @@ Request: ```/api/v1/objects/6/images```
         "object_id": 6,
     }
 ]
+```  
+### ```GET /api/v1/images```  
+> Get data on all images
+Request: ```/api/v1/images```  
+**Example Response** 
+```
+[
+    {
+        "id": 1,
+        "image_id": "GSFC_20171208_Archive_e001150",
+        "image_name": "Earth",
+        "object_id": 6,
+    },
+    {
+        "id": 2,
+        "image_id": "iss042e013697",
+        "image_name": "Earth",
+        "object_id": 6,
+    },
+    {
+        "id": 3,
+        "image_id": "iss036e022303",
+        "image_name": "Earth",
+        "object_id": 6,
+    },
+    ...
+]
 ```
