@@ -8,6 +8,7 @@
 
 ### ```GET /api/v1/objects```
 > Get data on all objects   
+Request: ```/api/v1/objects```  
 **Example Response**
 ```
 {
@@ -74,4 +75,37 @@
         ]
     }
 }
+```
+
+### ```GET /api/v1/objects/:id/images``
+> Get data on all images for an associated object    
+Request: ```/api/v1/objects/6/images```  
+**Example Response**
+```
+[
+    {
+        "id": 1,
+        "image_id": "GSFC_20171208_Archive_e001150",
+        "image_name": "Earth",
+        "object_id": 6,
+    },
+    {
+        "id": 2,
+        "image_id": "iss042e013697",
+        "image_name": "Earth",
+        "object_id": 6,
+    },
+    {
+        "id": 3,
+        "image_id": "iss036e022303",
+        "image_name": "Earth",
+        "object_id": 6,
+    },
+    {
+        "id": 4,
+        "image_id": "iss040e019206",
+        "image_name": "Earth",
+        "object_id": 6,
+    }
+]
 ```
